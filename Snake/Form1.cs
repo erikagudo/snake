@@ -12,7 +12,9 @@ namespace Snake_Game
     public partial class afd : Form
 
     {
-        Random randFood = new Random();
+       // este codigo fue basado en el tutorial "C Sharp Tutorial Snake Game - Part One Drawing the Snake" (http://www.youtube.com/watch?v=mLIB60wG_AI)
+       
+       Random randFood = new Random();
 
         Graphics paper;
         Snake snake = new Snake();
