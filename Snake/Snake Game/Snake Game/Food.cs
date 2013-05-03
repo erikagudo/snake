@@ -41,4 +41,41 @@ namespace Snake_Game
         }
 
     }
-}
+class Bonus 
+    {
+   private int x, y, width, height;
+        private SolidBrush brush;
+        public Rectangle bonusRec;
+        public Bonus(Random randBonus)
+        {
+            x = randBonus.Next(0, 29) * 10;
+            y = randBonus.Next(0, 29) * 10;
+
+            brush = new SolidBrush(Color.Purple);
+
+            width = 10;
+            height = 10;
+
+            bonusRec = new Rectangle(x, y, width, height);
+
+        }
+
+        public void bonusLocation(Random randBonus)
+        {
+            x = randBonus.Next(0, 29) * 10;
+            y = randBonus.Next(0, 29) * 10;
+
+        }
+
+        public void drawBonus(Graphics paper)
+        {
+            bonusRec.X = x;
+            bonusRec.Y = y;
+
+            paper.FillRectangle(brush, bonusRec);
+        }
+              }
+
+      
+    }
+
