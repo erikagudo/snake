@@ -16,9 +16,12 @@ namespace Snake_Game
        
        Random randFood = new Random();
 
+        Random randFood = new Random();
+        Random randBonus = new Random();
         Graphics paper;
         Snake snake = new Snake();
         Food food;
+        Bonus bonus;
 
         bool left = false;
         bool right = false;
@@ -32,12 +35,14 @@ namespace Snake_Game
         {
             InitializeComponent();
             food = new Food(randFood);
+            bonus = new Bonus(randBonus);
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             paper = e.Graphics;
             food.drawFood(paper);
+             bonus.drawBonus(paper);
             snake.drawSnake(paper);
 
           
@@ -107,6 +112,14 @@ namespace Snake_Game
                     food.foodLocation(randFood);
 
                 }
+                if  (snake.SnakeRec[i].IntersectsWith(bonus.bonusRec))
+                {
+                    score += 50;
+                    snake.growSnake();
+                    bonus.bonusLocation(randBonus);
+
+                }
+                
             }
 
             collision();
@@ -145,7 +158,7 @@ namespace Snake_Game
         public void restart()
         {
             timer1.Enabled = false;
-            MessageBox.Show("Mataste a tu serpiente hdp .i. (r.r) .i., tu puntuacion fue:" + score);
+            MessageBox.Show("Mataste a una pobre vivora e.e, tu puntuacion fue:" + score);
             snakeScoreLabel.Text = "0";
             score = 0;
             spaceBarLabel.Text = "Presiona Espacio para comenzar";
